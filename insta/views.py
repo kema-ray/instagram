@@ -41,12 +41,12 @@ def profile(request):
             profile_form = UpdateProfileForm(instance=request.user)
             user_form = UpdateUserForm(instance=request.user)
 
-            param = {
+            context = {
                 'user_form':user_form,
                 'profile_form':profile_form,
             }
 
-    return render(request,'profile.html', param)
+    return render(request,'profile.html', context=context)
 
 def search_results(request):
 

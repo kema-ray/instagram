@@ -37,3 +37,10 @@ class Profile(models.Model):
         self.user
     def __str__(self) -> str:
         return f'{self.user.username} Profile'
+
+class Follow(models.Model):
+    follower = models.ForeignKey(Profile,on_delete=models.CASCADE,related_name='following')
+    followed = models.ForeignKey(Profile,on_delete=models.CASCADE,related_name='folowers')
+
+    def __str__(self):
+        return f'{self.follower} Follow'
