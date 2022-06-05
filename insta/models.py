@@ -19,6 +19,11 @@ class Post(models.Model):
     def save_post(self):
         self.save()
 
+    @classmethod
+    def search_by_title(cls,search_term):
+        profiles=cls.objects.filter(title__icontains=search_term)
+        return profiles
+
     def __str__(self):
         return self.title
 
