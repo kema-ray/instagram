@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -6,7 +7,7 @@ class Post(models.Model):
     image = models.ImageField(upload_to='uploads/')
     title = models.CharField(max_length=100,blank=True)
     content = models.TextField()
-    # date_posted = models.DateTimeField(default=timezone.now)
+    date_posted = models.DateTimeField(default=timezone.now)
     likes = models.IntegerField(null=True, default=0)
     author = models.ForeignKey(User,on_delete=models.CASCADE,default='',null='True',related_name='author')
 
@@ -19,5 +20,5 @@ class Profile(models.Model):
     bio = models.TextField()
     user = models.OneToOneField(User,on_delete=models.CASCADE,default='',null=True)
 
-    # def __str__(self) -> str:
-    #     return f'{self.user} Profile'
+    def __str__(self) -> str:
+        return f'{self.user.username} Profile'
