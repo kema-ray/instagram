@@ -9,7 +9,15 @@ class Post(models.Model):
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     likes = models.IntegerField(null=True, default=0)
-    author = models.ForeignKey(User,on_delete=models.CASCADE,default='',null='True',related_name='author')
+    user = models.ForeignKey(User,on_delete=models.CASCADE,default='',null='True',related_name='author')
+
+    @classmethod
+    def all_posts(cls):
+        posts = cls.objects.all()
+        return posts
+
+    def save_post(self):
+        self.save()
 
     def __str__(self):
         return self.title
