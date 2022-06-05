@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import *
 from django.contrib.auth.decorators import login_required
+from .forms import *
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
