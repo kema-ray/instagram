@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import *
 from django.contrib.auth.decorators import login_required
 from .forms import *
@@ -25,6 +25,28 @@ def home(request):
         s_posts.append(obj)
 
     return render(request,'index.html',{"posts":s_posts})
+
+def profile(request):
+    if request.method == 'POST':
+        user_form = UpdateUserForm(request.POST,instance=request.user)
+        profile_form = UpdateProfileForm(request.POST,request.FILES,instance=request.user)
+
+        if profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+
+            return redirect('home')
+
+    else:
+            profile_form = UpdateProfileForm(instance=request.user)
+            user_form = UpdateUserForm(instance=request.user)
+
+            param = {
+                'user_form':user_form,
+                'profile_form':profile_form,
+            }
+
+    return render(request,'profile.html', param)
 
 def search_results(request):
 

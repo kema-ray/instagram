@@ -33,5 +33,7 @@ class Profile(models.Model):
     bio = models.TextField()
     user = models.OneToOneField(User,on_delete=models.CASCADE,default='',null=True)
 
+    def save_profile(self):
+        self.user
     def __str__(self) -> str:
         return f'{self.user.username} Profile'
