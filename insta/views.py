@@ -84,5 +84,20 @@ def user_profile(request,username):
     } 
     print(followers)
     return render(request,'user_profile.html',context=context)           
-        
+
+def new_post(request):
+    current_user = request.user
+
+    if request.method == 'POST':
+        form = NewPostForm(request.POST,request.FILES)
+        if form.is_valid():
+            s_image = form.save(commit=False)
+            s_image.user = current_user
+
+            s_image.save()
+        return redirect('home')
+    else:
+        form = NewPostForm()
+    return render(request,'new_post.html',{"form":form})
+
 
