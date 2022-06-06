@@ -20,7 +20,8 @@ def home(request):
             avatar = picture,
             image = post.image.url,
             name = post.title,
-            content = post.content
+            content = post.content,
+            date_posted = post.date_posted
         )
         s_posts.append(obj)
 

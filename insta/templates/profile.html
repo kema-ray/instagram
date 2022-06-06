@@ -6,8 +6,18 @@
     <div class="content-section container" style="padding-top: 100px;">
     <div class="media">
         <div class="col-md-4">
-            <div style="width: 150px; height:150px; overflow:hidden; border-radius:50%;" class="img-wrapper">
+            <!-- <div style="width: 150px; height:150px; overflow:hidden; border-radius:50%;" class="img-wrapper">
                 <img src="{{user.profile.pic}}" alt="" style="width: 120px; height:120px;">
+            </div> -->
+            <div class=" card-header pb-2 row m-0" style="margin-left:1% !important; margin-bottom: 1%;">
+                <div style="padding-left: 0px !important;" class="col-4 no-padding d-flex align-items-center">
+                {% if user.profile.pic%}
+                <img src="../../media/{{user.profile.pic}}" alt="{{ post.user}}" height="50px" width="50px" style="border-radius: 50%;">
+                {% else %}
+                <img src="../../media/uploads/c-d-x-PDX_a_82obo-unsplash.jpg" alt="{{ post.user}}" height="50px" width="50px" style="border-radius: 50%;">
+                {% endif %}
+                <strong>{{ post.user}}</strong>
+                </div>
             </div>
         </div>
         <div class="media-body">

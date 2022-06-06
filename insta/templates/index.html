@@ -4,29 +4,38 @@
 {%block content%}
 {{ block.super}}
 
-<div style="overflow-x: hidden;">
-  <div class="card" style="margin-top: 100px;">
+<div>
+  <div class="card" style="margin-top: 50px;">
     {%for new_post in posts %}
-    <div>
-      <div class="row" style="margin-left: 50px;">
+    <div id="card1">
+      <div class="row" style="margin-left: 30%;">
 
         <div class="col-md-8  m-auto card">
-          <a href="user_profile">
-            <img width="50px" height="50px" style="margin-bottom: 8px;" class="img img-circle" src="{{new_post.avatar}}"
-              alt="" srcset="">
-            <span><b>{{new_post.author}}</b></span>
+          <a href="profile">
+            <!-- <img width="50px" height="50px" style="margin-bottom: 8px;" class="img img-circle" src="{{new_post.avatar}}"
+              alt="" srcset=""> -->
+              <div class=" card-header pb-2 row m-0" style="margin-left:1% !important; margin-bottom: 1%;">
+                <div style="padding-left: 0px !important;" class="col-4 no-padding d-flex align-items-center">
+                {% if user.profile.pic%}
+                <img src="../../media/{{user.profile.pic}}" alt="{{ post.user}}" height="50px" width="50px" style="border-radius: 50%;">
+                {% else %}
+                <img src="../../media/uploads/c-d-x-PDX_a_82obo-unsplash.jpg" alt="{{ post.user}}" height="50px" width="50px" style="border-radius: 50%;">
+                {% endif %}
+                <strong>{{ new_post.author}}</strong>
+                </div>
+            </div>
+            <!-- <span><b>{{new_post.author}}</b></span> -->
           </a>
 
-
-
           <div class="card mb-3">
-            <img src="{{new_post.image}}" class="img-responsive card-img-top" alt="image1" style="height: 400px; width: 600px; border-radius: 25px;">
+            <img src="{{new_post.image}}" class="img-responsive card-img-top" alt="image1" style="height: 80%; width: 80%; border-radius: 25px;">
           </div>
 
           <div class="card-body">
 
             <!-- <h3>{{new_post.name}}</h3> -->
             <p style="margin-top: 10px;"> <b>{{new_post.author}} ~ </b>{{new_post.content}}</p>
+            <strong><p>{{new_post.date_posted}}</p></strong>
           </div>
 
           <div class="card-footer">
