@@ -1,5 +1,6 @@
 <!-- <title>Instagram</title> -->
 {%extends "base.html"%}
+{% load static %}
 {%block content%}
 {{ block.super}}
 
@@ -7,10 +8,10 @@
   <div class="card" style="margin-top: 100px;">
     {%for new_post in posts %}
     <div>
-      <div class="row" style="margin-left: 450px;">
+      <div class="row" style="margin-left: 50px;">
 
         <div class="col-md-8  m-auto card">
-          <a href="profile">
+          <a href="user_profile">
             <img width="50px" height="50px" style="margin-bottom: 8px;" class="img img-circle" src="{{new_post.avatar}}"
               alt="" srcset="">
             <span><b>{{new_post.author}}</b></span>

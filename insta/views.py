@@ -12,7 +12,7 @@ def home(request):
     for post in posts:
         picture = Profile.objects.filter(user=post.user.id).first()
         if picture:
-            picture=picture.pic.url
+            picture=picture.pic
         else:
             picture = ''
         obj = dict(
@@ -65,7 +65,7 @@ def search_results(request):
 def user_profile(request,username):
     user_prof = get_object_or_404(User,username=username)
     if request.user == user_prof:
-        return redirect('profile',username=request.user.username)
+        return redirect('user_profile',username=request.user.username)
     user_posts = user_prof.profile.posts.all()
 
     followers = Follow.objects.filter(followed=user_prof.profile)

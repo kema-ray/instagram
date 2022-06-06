@@ -7,7 +7,7 @@
     <div class="media">
         <div class="col-md-4">
             <div style="width: 150px; height:150px; overflow:hidden; border-radius:50%;" class="img-wrapper">
-                <img src="{{user.profile.pic.url }}" alt="" style="width: 120px; height:120px;">
+                <img src="{{user.profile.pic}}" alt="" style="width: 120px; height:120px;">
             </div>
         </div>
         <div class="media-body">
@@ -20,7 +20,7 @@
 
     <div class="container">
         <form method="POST" enctype="multipart/form-data" >
-            {%csrf_token%}
+            {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Profile info</legend>
                 {{ user_form|crispy }}
