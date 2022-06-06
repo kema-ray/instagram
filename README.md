@@ -89,7 +89,7 @@ python3.8 manage.py runserver
 ## Built With
 
 * Python3.8
-* Django 2.2.8
+* Django 4.0.5
 * Postgresql 
 * Boostrap
 * HTML
