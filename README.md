@@ -47,19 +47,24 @@ As a user I would like to:
 * pip
 
 #### Clone the Repo and rename it.
+```bash
 git clone https://github.com/kema-ray/instagram.git
 #### Initialize git and add the remote repository
-
+```bash
 git init
-
+```
+```git
 git remote add origin <your-repository-url>
+```
 
 #### Create and activate the virtual environment
-
+```git
 python3.8 -m virtualenv virtual
+```
 
+```git
 source virtual/bin/activate
-
+```
 
 #### Install dependancies
 Install dependancies that will create an environment for the app to run
