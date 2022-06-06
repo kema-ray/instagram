@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import get_object_or_404, render,redirect
 from .models import *
 from django.contrib.auth.decorators import login_required
 from .forms import *
@@ -60,3 +60,29 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request,'search.html',{"message":message})
+
+
+def user_profile(request,username):
+    user_prof = get_object_or_404(User,username=username)
+    if request.user == user_prof:
+        return redirect('profile',username=request.user.username)
+    user_posts = user_prof.profile.posts.all()
+
+    followers = Follow.objects.filter(followed=user_prof.profile)
+    follow_status = None
+    for follower in followers:
+        if request.user.profile == follower.follower:
+            follow_status = True
+        else:
+            follow_status = False
+
+    context = {
+        'user_prof':user_prof,
+        'user_posts':user_posts,
+        'followers':followers,
+        'follow_status':follow_status,
+    } 
+    print(followers)
+    return render(request,'user_profile.html',context=context)           
+        
+
