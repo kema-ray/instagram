@@ -106,10 +106,5 @@ def new_post(request):
         form = NewPostForm()
     return render(request,'new_post.html',{"form":form})
 
-def likes(request,pk):
-    # post=get_object_or_404(Post, id=pk)
-    post = Post.objects.get(pk=pk)
-    post.likes+=1
-    post.save()
-    return redirect('home')
+
 
