@@ -4,14 +4,14 @@
 {%block content%}
 {{ block.super}}
 
-<div>
+<div style="overflow-x: hidden;">
   <div class="card" style="margin-top: 50px;">
     {%for new_post in posts %}
     <div id="card1">
-      <div class="row" style="margin-left: 30%;">
+      <div class="row" style="margin-left: 20%;">
 
         <div class="col-md-8  m-auto card">
-          <a href="profile">
+          <a style="color: rgb(11, 10, 10);" href="profile">
             <!-- <img width="50px" height="50px" style="margin-bottom: 8px;" class="img img-circle" src="{{new_post.avatar}}"
               alt="" srcset=""> -->
               <div class=" card-header pb-2 row m-0" style="margin-left:1% !important; margin-bottom: 1%;">
@@ -22,6 +22,7 @@
                 <img src="../../media/uploads/c-d-x-PDX_a_82obo-unsplash.jpg" alt="{{ post.user}}" height="50px" width="50px" style="border-radius: 50%;">
                 {% endif %}
                 <strong>{{ new_post.author}}</strong>
+                <a href="" style="margin-left: 10px; font-size: 15px;">Follow</a>
                 </div>
             </div>
             <!-- <span><b>{{new_post.author}}</b></span> -->
@@ -38,8 +39,29 @@
             <strong><p>{{new_post.date_posted}}</p></strong>
           </div>
 
-          <div class="card-footer">
-          </div>
+          <!-- <div class="card-footer"> -->
+            <div class="card-footer row" style="margin-left:2%;">
+              <div class="col-6" style="display: flex; margin-top: 1%;">
+                  <small style="opacity: 0.8; color: rgba(255, 255, 255, 0.1) !important;">
+                      <!-- Like Buttons Here -->
+                    
+                      <span class="info" style="color:black ;"><i class="far fa-heart fa-2x" ></i></span>
+                          <!-- <i style="color: red; font-size: 20px;" class="fa fa-heart"></i> -->
+                          <p style="color: black;">{{new_post.likes}} likes</p>
+                      </a>
+                  </small>
+                  <small style="opacity: 0.8; margin-left:15px; color: rgba(255, 255, 255, 0.1) !important;">
+                      <a href="">
+                          <i style=" font-size: 22px; color:black;" class="far fa-comment"></i>
+                      </a>
+                  </small>
+                  <small style="opacity: 0.8; margin-left:15px; color: rgba(255, 255, 255, 0.1) !important;">
+                      <a href="">
+                          <i style=" font-size: 22px; color:black;" class="far fa-paper-plane"></i>
+                      </a>
+                  </small>
+              </div>
+          <!-- </div> -->
         </div>
       </div>
     </div><br><br>

@@ -2,6 +2,9 @@ from django.shortcuts import get_object_or_404, render,redirect
 from .models import *
 from django.contrib.auth.decorators import login_required
 from .forms import *
+from django.urls import reverse
+from dataclasses import fields
+
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
@@ -21,7 +24,8 @@ def home(request):
             image = post.image.url,
             name = post.title,
             content = post.content,
-            date_posted = post.date_posted
+            date_posted = post.date_posted,
+            likes = post.likes
         )
         s_posts.append(obj)
 
@@ -102,4 +106,10 @@ def new_post(request):
         form = NewPostForm()
     return render(request,'new_post.html',{"form":form})
 
+def likes(request,pk):
+    # post=get_object_or_404(Post, id=pk)
+    post = Post.objects.get(pk=pk)
+    post.likes+=1
+    post.save()
+    return redirect('home')
 

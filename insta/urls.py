@@ -3,6 +3,7 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 from insta import views as user_views
+from .views import *
 # from django.contrib.auth import views as auth_views
 
 urlpatterns=[
@@ -11,6 +12,7 @@ urlpatterns=[
     path('new_post/',views.new_post,name='new_post'),
     path('profile/', user_views.profile,name = 'profile'),
     path('user_profile/', user_views.user_profile, name='user_profile'),
+    path('<str:pk>',views.likes, name='likes'),
 ]
 
 if settings.DEBUG:
