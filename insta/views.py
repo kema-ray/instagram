@@ -85,6 +85,7 @@ def user_profile(request,username):
     print(followers)
     return render(request,'user_profile.html',context=context)           
 
+@login_required(login_url='/accounts/login/')
 def new_post(request):
     current_user = request.user
 
